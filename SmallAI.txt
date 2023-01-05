@@ -1,0 +1,35 @@
+Bootstrap: docker
+From: rocker/r-ubuntu
+
+%labels
+Shaoqiu Chen shaoqiu@hawaii.edu
+
+
+%post
+## Updates and essentials
+
+apt-get update
+apt-get install -y build-essential
+apt-get install -y wget git curl lftp unzip perl bowtie cutadapt
+
+
+
+####install sport1.1
+wget https://github.com/junchaoshi/SPORTS1.1/archive/master.zip
+unzip master.zip 
+
+export PATH=$PATH:$PWD/sports1.1-master/source
+
+chmod 755 /sports1.1-master/source/sports.pl
+
+
+###installl sra-tools
+wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+tar -vxzf sratoolkit.current-ubuntu64.tar.gz 
+
+export PATH=$PATH:$PWD/sratoolkit.3.0.1-ubuntu64/bin
+
+
+
+
+
